@@ -1,15 +1,13 @@
 <?php
 
 use App\Models\Student;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('students', function() {
-    $student = Student::where('id', 1)->first();
-    return $student->posts();
+Route::get('download-pdf' , function() {
+    $pdf = Pdf::loadView('student', ["students" => Student::all()]);
+    return $pdf->download();
+});
+Route::get('students', function(){
+    return view('student', ["students" => Student::all()]);
 });
