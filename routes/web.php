@@ -1,15 +1,13 @@
 <?php
 
-use App\Models\Student;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\Department;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('teacher-department', function(){
+    return Teacher::where('id', 102)->first()->departments;
+});
 
-Route::get('students', function() {
-    $student = Student::where('id', 1)->first();
-    return $student->posts();
+Route::get('department-teacher', function(){
+    return Department::where('id', 1)->first()->teachers;
 });
