@@ -10,6 +10,6 @@ class Department extends Model
     use HasFactory;
 
     public function teachers(){
-        return $this->belongsToMany(Teacher::class);
+        return $this->belongsToMany(Teacher::class , 'department_teacher');
     }
 }

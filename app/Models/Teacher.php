@@ -11,6 +11,6 @@ class Teacher extends Model
     public $timestamps = false;
 
     public function departments(){
-        return $this->belongsToMany(Department::class);
+        return $this->belongsToMany(Department::class , 'department_teacher');
     }
 } 

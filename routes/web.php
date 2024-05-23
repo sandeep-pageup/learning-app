@@ -5,7 +5,7 @@ use App\Models\Teacher;
 use Illuminate\Support\Facades\Route;
 
 Route::get('teacher-department', function(){
-    return Teacher::where('id', 102)->first()->departments;
+    return Teacher::where('id', 101)->first()->departments;
 });
 
 Route::get('department-teacher', function(){
