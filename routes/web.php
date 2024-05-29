@@ -1,15 +1,13 @@
 <?php
 
-use App\Models\Student;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('students', function() {
-    $student = Student::where('id', 1)->first();
-    return $student->posts();
+Route::get('/', function()
+{
+   return View::make('pages.home');
+});
+Route::get('/about', function()
+{
+   return View::make('pages.contact');
 });
