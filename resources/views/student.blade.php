@@ -21,6 +21,7 @@
         <table class="table table-bordered table-striped" id="students-table">
             <thead class="thead-dark">
                 <tr>
+                    <th>Action</th>
                     <th>ID</th>
                     <th>Name</th>
                 </tr>
@@ -33,8 +34,9 @@
             $('#students-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('students') }}',
+                ajax: '{{ url('students-add-column') }}',
                 columns: [
+                    { data: 'action' },
                     { data: 'id' },
                     { data: 'name' }
                 ],
