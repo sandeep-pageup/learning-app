@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Http\Controllers;
 
-use App\Models\AppRoute;
-use Illuminate\Database\Seeder;
+use Illuminate\Http\Request;
 
-class DatabaseSeeder extends Seeder
+class SearchController extends Controller
 {
-    public $routes = [
+
+    public $routes = collect([
         'Administration' => 'admin/admin_master',
         'Accounts' => 'accounts/fee_master',
         'Library' => 'library/library_master',
@@ -118,17 +118,10 @@ class DatabaseSeeder extends Seeder
         'Time Table' => 'admin/time_table_master',
         'Teacher Substitution' => 'admin/time_table_substitution',
         'Time Table Report' => 'admin/time_table_group',
-    ];
+    ]);
 
-    public function run(): void
+    public function search_data($parameter)
     {
-        $data = [];
-        foreach ($this->routes as $key => $value) {
-            array_push($data, [
-                'parameter' => $key,
-                'route' => $value
-            ]);
-        }
-        AppRoute::insert($data);
+        return response()->json($this->routes->search($parameter));
     }
 }
