@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     }
 
     protected function configureRateLimiting() {
-        RateLimiter::for('global' , function() {
-            return Limit::perMinute(5); 
+        RateLimiter::for('global' , function(Request $request) {
+            return Limit::perMinute(5)->by($request->ip());
         });
     }
 }
