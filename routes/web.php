@@ -1,15 +1,11 @@
 <?php
 
-use App\Models\Student;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('students', function() {
-    $student = Student::where('id', 1)->first();
-    return $student->posts();
+Route::get('/', function () {
+    Mail::to('ombhandari7989@gmail.com')->send(new WelcomeEmail([
+        'name' => 'Raaj',
+    ]));
 });
